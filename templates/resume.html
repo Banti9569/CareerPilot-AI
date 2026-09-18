@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerPilot AI - Resume Analysis</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/resume.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📄 CareerPilot AI Resume Analyzer</h1>
+
+    <!-- Upload Form -->
+    <form method="POST" enctype="multipart/form-data" id="resumeForm">
+
+        <input type="file" name="resume" accept=".pdf" required>
+
+        <button class="upload-btn" type="submit">
+            Upload Resume
+        </button>
+
+    </form>
+
+    <!-- ATS Score -->
+
+<div class="top-result">
+
+    <div class="card">
+
+        <h2>📊 ATS Score</h2>
+
+        <div class="score">
+            {{ ats_score }}%
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>🟢 Skills Found</h2>
+
+        {% if skills %}
+
+            {% for skill in skills %}
+                <span class="skill">{{ skill }}</span>
+            {% endfor %}
+
+        {% else %}
+
+            <p>No skills detected.</p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+<br>
+
+    <hr>
+
+    <!-- AI Resume Analysis -->
+    <div class="card">
+
+        <h2>🤖 AI Resume Analysis</h2>
+
+        <h3>💪 Strengths</h3>
+        <ul>
+            {% if strengths %}
+                {% for item in strengths %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            {% else %}
+                <li>No data available.</li>
+            {% endif %}
+        </ul>
+
+        <h3>⚠️ Weaknesses</h3>
+        <ul>
+            {% if weaknesses %}
+                {% for item in weaknesses %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            {% else %}
+                <li>No data available.</li>
+            {% endif %}
+        </ul>
+
+        <h3>💡 Suggestions</h3>
+        <ul>
+            {% if suggestions %}
+                {% for item in suggestions %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            {% else %}
+                <li>No suggestions available.</li>
+            {% endif %}
+        </ul>
+
+
+    </div>
+
+    <!-- Missing Skills -->
+    <div class="card">
+
+        <h2>🔴 Missing Skills</h2>
+
+        {% if missing_skills %}
+
+            {% for skill in missing_skills %}
+                <span class="missing">{{ skill }}</span>
+            {% endfor %}
+
+        {% else %}
+
+            <p>No missing skills.</p>
+
+        {% endif %}
+
+    </div>
+
+    <!-- Raw AI Response (Optional) -->
+    {% if ai_result %}
+    <div class="card">
+
+        <h2>📄 AI Raw Response</h2>
+
+        <div class="ai-box">
+            <pre>{{ ai_result }}</pre>
+        </div>
+
+    </div>
+    {% endif %}
+
+    <!-- Extracted Resume Text -->
+    <div class="card">
+
+        <h2>📄 Extracted Resume Text</h2>
+
+        <pre>{{ extracted_text }}</pre>
+
+    </div>
+
+    <br>
+
+    <a href="/dashboard" class="upload-btn">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+<div id="loading" style="display:none;">
+    <div class="loader-box">
+        <div class="spinner"></div>
+
+        <h2>🤖 CareerPilot AI</h2>
+
+        <p>Analyzing Resume...</p>
+
+        <small>Please wait a few seconds...</small>
+    </div>
+</div>
+
+<script>
+document.getElementById("resumeForm").addEventListener("submit", function(){
+
+    document.getElementById("loading").style.display = "flex";
+
+});
+
+</script>
+
+</body>
+</html>

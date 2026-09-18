@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CareerPilot AI - Learning Roadmap</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/roadmap.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🗺️ AI Learning Roadmap</h1>
+
+<form method="POST">
+
+<label>Target Career</label>
+
+<input
+type="text"
+name="career"
+placeholder="Python Developer"
+required>
+
+<label>Current Skill Level</label>
+
+<select name="level">
+
+<option>Beginner</option>
+
+<option>Intermediate</option>
+
+<option>Advanced</option>
+
+</select>
+
+<label>Study Hours Per Day</label>
+
+<input
+type="number"
+name="hours"
+min="1"
+max="12"
+required>
+
+<button type="submit">
+
+🚀 Generate Roadmap
+
+</button>
+
+</form>
+
+<br>
+
+{% if roadmap_data %}
+
+<div class="card">
+
+<h2>🎯 Target Career</h2>
+
+<p>{{ roadmap_data.target_career }}</p>
+
+</div>
+
+<div class="card">
+
+<h2>📚 Skills To Learn</h2>
+
+<div class="tags">
+
+{% for skill in roadmap_data.skills %}
+
+<span class="tag">{{ skill }}</span>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>📅 Weekly Roadmap</h2>
+
+<ol>
+
+{% for step in roadmap_data.roadmap %}
+
+<li>{{ step }}</li>
+
+{% endfor %}
+
+</ol>
+
+</div>
+
+<div class="card">
+
+<h2>🎥 Best YouTube Channels</h2>
+
+<div class="resource-list">
+
+{% for yt in roadmap_data.youtube %}
+
+<div class="resource">
+
+🎥 {{ yt }}
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>🌐 Best Learning Websites</h2>
+
+<div class="resource-list">
+
+{% for site in roadmap_data.websites %}
+
+<div class="resource">
+
+🌐 {{ site }}
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>💻 Practice Platforms</h2>
+
+<div class="resource-list">
+
+{% for p in roadmap_data.practice %}
+
+<div class="resource">
+
+💻 {{ p }}
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>🚀 Mini Projects</h2>
+
+<div class="resource-list">
+
+{% for project in roadmap_data.projects %}
+
+<div class="resource">
+
+🚀 {{ project }}
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>⭐ Final Advice</h2>
+
+<p>{{ roadmap_data.final_advice }}</p>
+
+</div>
+
+{% endif %}
+
+<br>
+
+<a class="back-btn" href="/dashboard">
+
+← Back to Dashboard
+
+</a>
+
+</div>
+
+</body>
+
+</html>

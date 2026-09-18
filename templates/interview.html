@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CareerPilot AI - Interview Preparation</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/interview.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎤 AI Interview Preparation</h1>
+
+<form method="POST">
+
+<label>Job Role</label>
+
+<input
+type="text"
+name="job_role"
+placeholder="Python Developer"
+required>
+
+<label>Experience Level</label>
+
+<select name="experience">
+
+<option>Fresher</option>
+<option>1-2 Years</option>
+<option>3-5 Years</option>
+
+</select>
+
+<label>Interview Type</label>
+
+<select name="interview_type">
+
+<option>HR</option>
+<option>Technical</option>
+<option>Both</option>
+
+</select>
+
+<button type="submit">
+
+🚀 Generate Interview Questions
+
+</button>
+
+</form>
+
+<br>
+
+{% if error_message %}
+
+<div class="error-box">
+
+    {{ error_message }}
+
+</div>
+
+{% endif %}
+
+
+<!-- Questions -->
+<div class="card">
+
+<h2>❓ Interview Questions</h2>
+
+{% for q in interview_data.questions %}
+
+<div class="question-box">
+
+<h3>Question {{ loop.index }}</h3>
+
+<p>{{ q }}</p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<!-- Answers -->
+
+<div class="card">
+
+<h2>✅ Sample Answers</h2>
+
+{% for a in interview_data.answers %}
+
+<div class="answer-box">
+
+<h3>Answer {{ loop.index }}</h3>
+
+<p>{{ a }}</p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<!-- Tips -->
+
+<div class="card">
+
+<h2>💡 Interview Tips</h2>
+
+<div class="tips">
+
+{% for tip in interview_data.tips %}
+
+<div class="tip">
+
+💡 {{ tip }}
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+<br>
+
+<a class="back-btn" href="/dashboard">
+
+← Back to Dashboard
+
+</a>
+
+</div>
+
+</body>
+
+</html>

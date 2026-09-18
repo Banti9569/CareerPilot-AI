@@ -1,0 +1,178 @@
+body{
+    font-family:Arial, sans-serif;
+    background:#f4f7fc;
+    margin:0;
+}
+
+.container{
+    max-width:950px;
+    margin:40px auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(0,0,0,.1);
+}
+
+h1{
+    text-align:center;
+    color:#2563eb;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+input,select{
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    margin-top:20px;
+    padding:14px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:17px;
+    font-weight:bold;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.card{
+
+    margin-top:25px;
+    padding:25px;
+    border-radius:15px;
+    background:#ffffff;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.card h2{
+    color:#2563eb;
+}
+
+ul{
+    padding-left:20px;
+}
+
+li{
+    margin-bottom:10px;
+    line-height:1.6;
+}
+
+.back-btn{
+    display:inline-block;
+    margin-top:25px;
+    padding:12px 20px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+}
+
+.back-btn:hover{
+    background:#1d4ed8;
+}
+
+.question-box{
+
+    background:#eef4ff;
+
+    border-left:5px solid #2563eb;
+
+    padding:18px;
+
+    border-radius:10px;
+
+    margin-top:15px;
+
+}
+
+.question-box h3{
+
+    color:#2563eb;
+
+    margin-bottom:10px;
+
+}
+
+.question-box p{
+
+    line-height:1.7;
+
+}
+
+.answer-box{
+
+    background:#f0fdf4;
+
+    border-left:5px solid #22c55e;
+
+    padding:18px;
+
+    border-radius:10px;
+
+    margin-top:15px;
+
+}
+
+.answer-box h3{
+
+    color:#16a34a;
+
+    margin-bottom:10px;
+
+}
+
+.answer-box p{
+
+    line-height:1.8;
+
+}
+
+.tips{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+.tip{
+
+    background:#fff7ed;
+
+    border-left:5px solid #f59e0b;
+
+    padding:15px;
+
+    border-radius:10px;
+
+    font-weight:bold;
+
+}
+
+.error-box{
+    background:#fff3cd;
+    color:#856404;
+    border:1px solid #ffeeba;
+    padding:15px;
+    border-radius:10px;
+    margin-top:20px;
+    font-weight:bold;
+}

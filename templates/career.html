@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerPilot AI - Career Advice</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/career.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🤖 CareerPilot AI Career Advisor</h1>
+
+    <form method="POST">
+
+        <label>Name</label>
+        <input type="text" name="name" required>
+
+        <label>Degree</label>
+        <input type="text" name="degree" required>
+
+        <label>Your Skills</label>
+        <textarea name="skills" rows="4" required></textarea>
+
+        <label>Interests</label>
+        <textarea name="interests" rows="3" required></textarea>
+
+        <label>Career Goal</label>
+        <input type="text" name="goal" required>
+
+        <button type="submit">
+            🚀 Get AI Career Advice
+        </button>
+
+    </form>
+
+   <br>
+
+{% if error_message %}
+
+<div class="error-box">
+    {{ error_message }}
+</div>
+
+{% endif %}
+
+{% if career_data %}
+
+<!-- Career Path -->
+<div class="card">
+    <h2>💼 Best Career Path</h2>
+    <p>{{ career_data.career_path }}</p>
+</div>
+
+<!-- Job Roles -->
+<div class="card">
+    <h2>🎯 Suitable Job Roles</h2>
+
+    <div class="tags">
+        {% for role in career_data.job_roles %}
+            <span class="tag">{{ role }}</span>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Skills -->
+<div class="card">
+    <h2>📚 Skills To Learn</h2>
+
+    <ul>
+        {% for skill in career_data.skills_to_learn %}
+            <li>{{ skill }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Salary -->
+<div class="card">
+    <h2>💰 Expected Salary</h2>
+
+    <p class="salary">
+        {{ career_data.expected_salary }}
+    </p>
+</div>
+
+<!-- Roadmap -->
+<div class="card">
+    <h2>🗺️ 6-Month Roadmap</h2>
+
+    <ol>
+        {% for step in career_data.roadmap %}
+            <li>{{ step }}</li>
+        {% endfor %}
+    </ol>
+</div>
+
+<!-- Final Advice -->
+<div class="card">
+    <h2>✅ Final Advice</h2>
+
+    <p>{{ career_data.final_advice }}</p>
+</div>
+
+{% endif %}
+
+<br>
+
+<a class="back-btn" href="/dashboard">
+    ← Back to Dashboard
+</a>
+
+</body>
+</html>

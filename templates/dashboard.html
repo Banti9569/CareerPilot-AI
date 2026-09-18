@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CareerPilot AI | Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar">
+
+        <div class="brand">
+            <div class="brand-icon">✦</div>
+
+            <div>
+                <h2>CareerPilot <span>AI</span></h2>
+                <small>AI Career Assistant</small>
+            </div>
+        </div>
+
+
+        <!-- Profile -->
+        <div class="profile-menu">
+
+            <button class="profile-btn" onclick="toggleProfile()">
+
+                <div class="avatar">
+                    {{ name[0]|upper }}
+                </div>
+
+                <div class="profile-name">
+                    <strong>{{ name }}</strong>
+                    <small>Student</small>
+                </div>
+
+                <span class="arrow">⌄</span>
+
+            </button>
+
+
+            <div class="dropdown" id="profileDropdown">
+
+                <div class="dropdown-header">
+
+                    <div class="big-avatar">
+                        {{ name[0]|upper }}
+                    </div>
+
+                    <div>
+                        <strong>{{ name }}</strong>
+                        <p>{{ session["user_email"] }}</p>
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <a href="/profile">
+                    👤
+                    <span>My Profile</span>
+                </a>
+
+                <a href="/logout" class="logout">
+                    🚪
+                    <span>Logout</span>
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="status">
+                <span class="status-dot"></span>
+                AI Assistant Online
+            </div>
+
+            <h1>
+                Welcome back,
+                <span>{{ name }}</span> 👋
+            </h1>
+
+            <p>
+                Your intelligent career companion is ready to help you
+                build a stronger resume, prepare for interviews,
+                discover your career path, and learn the right skills.
+            </p>
+
+        </div>
+
+
+        <div class="hero-decoration">
+
+            <div class="ai-circle">
+                <span>✦</span>
+            </div>
+
+            <div class="floating-dot dot-one"></div>
+            <div class="floating-dot dot-two"></div>
+            <div class="floating-dot dot-three"></div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= SECTION TITLE ================= -->
+
+    <div class="section-heading">
+
+        <div>
+            <h2>Your Career Tools</h2>
+
+            <p>
+                Everything you need to move closer to your dream career.
+            </p>
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= FEATURE CARDS ================= -->
+
+    <div class="cards">
+
+
+        <!-- Resume -->
+        <a href="/resume" class="card resume-card">
+
+            <div class="card-top">
+
+                <div class="icon-box">
+                    📄
+                </div>
+
+                <span class="card-arrow">↗</span>
+
+            </div>
+
+            <h3>Resume Analysis</h3>
+
+            <p>
+                Analyze your resume with AI and discover
+                your ATS score, strengths, weaknesses and missing skills.
+            </p>
+
+            <div class="card-link">
+                Analyze Resume →
+            </div>
+
+        </a>
+
+
+
+        <!-- Career -->
+        <a href="/career" class="card career-card">
+
+            <div class="card-top">
+
+                <div class="icon-box">
+                    🤖
+                </div>
+
+                <span class="card-arrow">↗</span>
+
+            </div>
+
+            <h3>AI Career Advice</h3>
+
+            <p>
+                Get personalized career recommendations,
+                suitable job roles, skills and career guidance.
+            </p>
+
+            <div class="card-link">
+                Get Career Advice →
+            </div>
+
+        </a>
+
+
+
+        <!-- Interview -->
+        <a href="/interview" class="card interview-card">
+
+            <div class="card-top">
+
+                <div class="icon-box">
+                    🎤
+                </div>
+
+                <span class="card-arrow">↗</span>
+
+            </div>
+
+            <h3>Interview Preparation</h3>
+
+            <p>
+                Practice realistic interview questions,
+                sample answers and useful interview tips.
+            </p>
+
+            <div class="card-link">
+                Start Practice →
+            </div>
+
+        </a>
+
+
+
+        <!-- Roadmap -->
+        <a href="/roadmap" class="card roadmap-card">
+
+            <div class="card-top">
+
+                <div class="icon-box">
+                    📚
+                </div>
+
+                <span class="card-arrow">↗</span>
+
+            </div>
+
+            <h3>Learning Roadmap</h3>
+
+            <p>
+                Generate a personalized learning roadmap
+                based on your career goal and current skill level.
+            </p>
+
+            <div class="card-link">
+                Build Roadmap →
+            </div>
+
+        </a>
+
+    </div>
+
+
+
+    <!-- ================= QUICK INFO ================= -->
+
+    <section class="info-section">
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                ✨
+            </div>
+
+            <div>
+                <h3>Powered by AI</h3>
+
+                <p>
+                    CareerPilot AI uses intelligent AI technology
+                    to provide personalized career guidance.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                🚀
+            </div>
+
+            <div>
+                <h3>Build Your Future</h3>
+
+                <p>
+                    Analyze → Learn → Practice → Get Job Ready.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="footer-brand">
+            <strong>CareerPilot AI</strong>
+            <span>•</span>
+            <span>v1.0</span>
+        </div>
+
+        <p>
+            Developed by <strong>Sagar Ali</strong>
+        </p>
+
+    </footer>
+
+</div>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+function toggleProfile() {
+
+    const dropdown =
+        document.getElementById("profileDropdown");
+
+    dropdown.classList.toggle("show");
+
+}
+
+
+/* Close dropdown when clicking outside */
+
+document.addEventListener("click", function(event) {
+
+    const menu =
+        document.querySelector(".profile-menu");
+
+    const dropdown =
+        document.getElementById("profileDropdown");
+
+    if (!menu.contains(event.target)) {
+
+        dropdown.classList.remove("show");
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
