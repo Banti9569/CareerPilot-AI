@@ -479,9 +479,11 @@ Study Hours Per Day: {hours}
 @app.route("/logout")
 def logout():
 
-    session.clear()
-    return redirect("/logout")
+    print("LOGOUT ROUTE CALLED")
 
+    session.clear()
+
+    return redirect("/login")
 
 os.makedirs(os.path.join(app.root_path, "database"), exist_ok=True)
 from database import schema
