@@ -10,6 +10,8 @@ from PyPDF2 import PdfReader
 app = Flask(__name__)
 load_dotenv()
 
+DB_PATH = os.path.join(app.root_path, "database", "database.db")
+
 app.secret_key = "careerpilot_secret_key_2026"
 
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
@@ -76,7 +78,7 @@ def login():
         email = request.form["email"]
         password = request.form["password"]
 
-        connection = sqlite3.connect("database/database.db")
+        connection = sqlite3.connect(DB_PATH)
         cursor = connection.cursor()
 
         cursor.execute(
@@ -478,10 +480,12 @@ Study Hours Per Day: {hours}
 def logout():
 
     session.clear()
-    return redirect("/login")
+    return redirect("/logout")
 
 
-    
+os.makedirs(os.path.join(app.root_path, "database"), exist_ok=True)
+from database import schema
+
 
 if __name__ == "__main__":
     app.run(debug=True)
